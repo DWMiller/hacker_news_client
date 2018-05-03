@@ -1,0 +1,32 @@
+.comment {
+  /* border: 1px solid black; */
+  /* background-color: #2c3d55; */
+  color: whitesmoke;
+  padding: 1em;
+  margin-bottom: 1em;
+  /* border-left: 1px solid grey; */
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+  /* border-bottom: 1px solid grey; */
+}
+
+.comment__header {
+  margin-bottom: 1em;
+}
+
+.comment__time,
+.comment__by {
+  margin-right: 1em;
+}
+
+.comment_toggle {
+  text-decoration: underline;
+}
+
+.comment__children {
+  margin-left: 2em;
+  margin-top: 1em;
+}
+
+.comment__children .comment {
+  /* border-bottom: none; */
+}
