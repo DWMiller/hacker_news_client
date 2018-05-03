@@ -2,6 +2,7 @@
   padding: 1em;
   margin-bottom: 1em;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
 }
 
 .comment__header {
@@ -19,6 +20,12 @@
 }
 
 .comment__children {
-  margin-left: 2em;
+  margin-left: 0.5em;
   margin-top: 1em;
+}
+
+@media (min-width: 800px) {
+  .comment__children {
+    margin-left: 2em;
+  }
 }
