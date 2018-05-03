@@ -21,6 +21,20 @@ class Stories extends Component {
     this.setState({ activePage: pageNumber });
   };
 
+  renderPagination = () => {
+    return (
+      <div>
+        <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={this.pageSize}
+          totalItemsCount={this.props.storyIds.length - 1}
+          pageRangeDisplayed={5}
+          onChange={this.handlePageChange}
+        />
+      </div>
+    );
+  };
+
   renderStories(storyIds) {
     return storyIds.map(storyId => (
       <StoryWithItem key={storyId} itemId={storyId} />
@@ -28,7 +42,7 @@ class Stories extends Component {
   }
 
   render() {
-    const start = this.pageSize * this.state.activePage;
+    const start = this.pageSize * (this.state.activePage - 1);
     let end = start + this.pageSize;
 
     end =
@@ -36,15 +50,9 @@ class Stories extends Component {
 
     return (
       <div className="stories">
-        {/* {this.renderStories(start, count, this.props.stories)} */}
+        {this.renderPagination()}
         {this.renderStories(this.props.storyIds.slice(start, end))}
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={this.pageSize}
-          totalItemsCount={this.props.storyIds.length}
-          pageRangeDisplayed={5}
-          onChange={this.handlePageChange}
-        />
+        {this.renderPagination()}
       </div>
     );
   }
