@@ -6,6 +6,8 @@ import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
 
 import { storyType } from '../../types';
 
+import './Story.css';
+
 export default class Story extends Component {
   render() {
     const { id, title, time, url, by, kids } = this.props;
@@ -14,22 +16,21 @@ export default class Story extends Component {
 
     return (
       <div className="story">
-        <h2>
-          <Link to={`/story/${id}`}>{title} </Link>
+        <h2 className="story__title">
+          <span>{title} </span>
           <span> - </span>
           <a href={url}>
             <ExternalLinkAlt />
           </a>
         </h2>
-        <p>
+        <p className="story__summary">
           <span className="story__by">
             Posted by {by} <Timestamp time={time} />
           </span>
-
-          <span className="story__commentCount">
-            {' '}
-            | {commentCount} Comments
-          </span>
+          <span> | </span>
+          <Link className="story__commentCount" to={`/story/${id}`}>
+            {commentCount} Comments
+          </Link>
         </p>
       </div>
     );
