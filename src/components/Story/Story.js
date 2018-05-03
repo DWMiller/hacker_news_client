@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Timestamp from 'react-timestamp';
 import { Link } from 'react-router-dom';
 
+import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
+
 import { storyType } from '../../types';
 
 export default class Story extends Component {
@@ -14,7 +16,10 @@ export default class Story extends Component {
       <div className="story">
         <h2>
           <Link to={`/story/${id}`}>{title} </Link>
-          <a href={url}>(Link)</a>
+          <span> - </span>
+          <a href={url}>
+            <ExternalLinkAlt />
+          </a>
         </h2>
         <p>
           <span className="story__by">

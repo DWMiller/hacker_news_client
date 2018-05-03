@@ -18,14 +18,17 @@ class StoryPage extends Component {
   };
 
   render() {
+    const { kids: commentIds = [] } = this.props;
+
     return (
       <div className="storyPage">
         <Story {...this.props} />
         <div className="comments">
           <Comments
-            commentIds={this.props.kids.slice(0, this.state.displayedComments)}
+            commentIds={commentIds.slice(0, this.state.displayedComments)}
           />
-          {this.state.displayedComments < this.props.kids.length && (
+
+          {this.state.displayedComments < commentIds.length && (
             <button onClick={this.loadMore}>More</button>
           )}
         </div>

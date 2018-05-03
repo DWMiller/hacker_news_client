@@ -40,7 +40,7 @@ class Comment extends PureComponent {
           <span className="comment__time">
             <Timestamp time={this.props.time} />{' '}
           </span>
-          <span onClick={this.toggleMinimized} className="comment_toggle">
+          <span onClick={this.toggleMinimized} className="comment__toggle">
             {this.state.minimized ? 'Expand' : 'Minimize'}
           </span>
         </div>

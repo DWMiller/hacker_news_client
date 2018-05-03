@@ -11,7 +11,7 @@ import './Stories.css';
 const StoryWithItem = withItem(Story);
 
 class Stories extends Component {
-  pageSize = 5;
+  pageSize = 10;
 
   state = {
     activePage: 1,
