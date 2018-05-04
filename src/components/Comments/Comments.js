@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import withItem from '../../helpers/withItem';
@@ -7,7 +7,7 @@ import Comment from '../Comment/Comment';
 
 const CommentWithItem = withItem(Comment);
 
-class Comments extends Component {
+class Comments extends PureComponent {
   renderComments(commentIds) {
     return commentIds.map(id => <CommentWithItem key={id} itemId={id} />);
   }

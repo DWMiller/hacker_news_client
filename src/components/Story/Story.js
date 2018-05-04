@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Timestamp from 'react-timestamp';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import { storyType } from '../../types';
 
 import './Story.css';
 
-export default class Story extends Component {
+export default class Story extends PureComponent {
   render() {
     const { id, title, time, url, by, kids } = this.props;
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import Story from '../Story/Story';
@@ -6,7 +6,7 @@ import Comments from '../Comments/Comments';
 
 import './StoryPage.css';
 
-class StoryPage extends Component {
+class StoryPage extends PureComponent {
   state = {
     displayedComments: 5,
   };

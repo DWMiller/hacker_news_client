@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './Header.css';
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
     return (
       <header className="header">

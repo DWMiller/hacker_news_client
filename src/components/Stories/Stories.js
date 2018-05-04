@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import Story from '../Story';
@@ -10,7 +10,7 @@ import './Stories.css';
 
 const StoryWithItem = withItem(Story);
 
-class Stories extends Component {
+class Stories extends PureComponent {
   pageSize = 10;
 
   state = {

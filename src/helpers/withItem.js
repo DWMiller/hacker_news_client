@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { fetchItem } from '../api';
 
 export default WrappedComponent => {
-  return class extends Component {
+  return class extends PureComponent {
     fetching = false;
 
     state = {

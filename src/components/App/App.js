@@ -38,7 +38,7 @@ class App extends Component {
             />
             <Route
               path="/story/:id"
-              component={({ match }) => (
+              render={({ match }) => (
                 <StoryPageWithItem itemId={parseInt(match.params.id, 10)} />
               )}
             />
