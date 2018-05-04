@@ -21,6 +21,11 @@
   cursor: pointer;
 }
 
+.comments__loadButton {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .comment__children {
   margin-left: 0.5em;
   margin-top: 1em;

@@ -29,7 +29,10 @@ class StoryPage extends Component {
           />
 
           {this.state.displayedComments < commentIds.length && (
-            <button onClick={this.loadMore}>More</button>
+            <a className="comments__loadButton" onClick={this.loadMore}>
+              Load More - {commentIds.length - this.state.displayedComments}{' '}
+              Remaining
+            </a>
           )}
         </div>
       </div>

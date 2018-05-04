@@ -73,7 +73,10 @@ class Comment extends PureComponent {
 
         {!this.state.minimized &&
           this.state.displayedChildren < commentIds.length && (
-            <button onClick={this.loadMore}>More</button>
+            <a className="comments__loadButton" onClick={this.loadMore}>
+              Load More - {commentIds.length - this.state.displayedChildren}{' '}
+              Remaining
+            </a>
           )}
       </div>
     );
