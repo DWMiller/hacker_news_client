@@ -4,14 +4,25 @@ import { fetchItem } from '../api';
 
 export default WrappedComponent => {
   return class extends Component {
+    fetching = false;
+
     state = {
       item: null,
     };
 
-    componentDidMount() {
-      fetchItem(this.props.itemId).then(item => {
+    itemFetched = item => {
+      if (this.fetching) {
         this.setState({ item });
-      });
+      }
+    };
+
+    componentDidMount() {
+      this.fetching = true;
+      fetchItem(this.props.itemId).then(this.itemFetched);
+    }
+
+    componentWillUnmount() {
+      this.fetching = false;
     }
 
     render() {
