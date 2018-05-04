@@ -16,6 +16,10 @@
   margin-right: 1em;
 }
 
+.comment__text {
+  overflow: auto;
+}
+
 .comment__toggle {
   /* text-decoration: underline; */
   cursor: pointer;
