@@ -45,12 +45,17 @@ class Comment extends PureComponent {
     return (
       <div className="comment">
         <div className="comment__header">
+          <span onClick={this.toggleMinimized} className="comment__toggle">
+            {this.state.minimized ? '[ + ]' : '[ - ]'}
+          </span>
+
           <span className="comment__by">{this.props.by}</span>
           <span className="comment__time">
             <Timestamp time={this.props.time} />{' '}
           </span>
-          <span onClick={this.toggleMinimized} className="comment__toggle">
-            {this.state.minimized ? 'Expand' : 'Minimize'}
+
+          <span className="comment__replyCount">
+            {commentIds.length} Replies
           </span>
         </div>
 

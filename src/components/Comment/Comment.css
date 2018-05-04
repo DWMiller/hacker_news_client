@@ -10,12 +10,14 @@
 }
 
 .comment__time,
-.comment__by {
+.comment__by,
+.comment__replyCount,
+.comment__toggle {
   margin-right: 1em;
 }
 
 .comment__toggle {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   cursor: pointer;
 }
 
