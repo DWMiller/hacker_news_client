@@ -13,10 +13,17 @@ class Comment extends PureComponent {
     const cleanedText = props.deleted ? 'Deleted' : sanitizeHtml(props.text);
 
     this.state = {
+      displayedChildren: 5,
       minimized: false,
       cleanedText,
     };
   }
+
+  loadMore = () => {
+    this.setState(state => ({
+      displayedChildren: state.displayedChildren + 5,
+    }));
+  };
 
   toggleMinimized = () => {
     this.setState({
@@ -33,6 +40,8 @@ class Comment extends PureComponent {
   }
 
   render() {
+    const { kids: commentIds = [] } = this.props;
+
     return (
       <div className="comment">
         <div className="comment__header">
@@ -52,9 +61,15 @@ class Comment extends PureComponent {
           />
         )}
 
-        {this.props.kids &&
-          !this.state.minimized &&
-          this.renderChildComments(this.props.kids)}
+        {!this.state.minimized &&
+          this.renderChildComments(
+            commentIds.slice(0, this.state.displayedChildren)
+          )}
+
+        {!this.state.minimized &&
+          this.state.displayedChildren < commentIds.length && (
+            <button onClick={this.loadMore}>More</button>
+          )}
       </div>
     );
   }
