@@ -19,6 +19,7 @@ h5 {
 
 a {
   color: #4a913c;
+  white-space: nowrap;
 }
 
 .loading {

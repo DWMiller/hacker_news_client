@@ -9,3 +9,7 @@
 .story__summary {
   margin: 0;
 }
+
+.story__by {
+  white-space: nowrap;
+}

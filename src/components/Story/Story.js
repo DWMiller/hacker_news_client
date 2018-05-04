@@ -24,10 +24,9 @@ export default class Story extends Component {
           <span>{title} </span>
         </h2>
         <p className="story__summary">
-          <span className="story__by">
-            Posted by {by} <Timestamp time={time} />
-          </span>
-          <span> | </span>
+          <span className="story__by">Posted by {by} </span>
+          <Timestamp className="story__time" time={time} />
+          {' | '}
           <Link className="story__commentCount" to={`/story/${id}`}>
             {commentCount} Comments
           </Link>
