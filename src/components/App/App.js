@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-import * as actionCreators from '../../reducers/actionCreators';
 import { fetchTopStories } from '../../api';
 import withItem from '../../helpers/withItem';
 
@@ -17,8 +13,16 @@ import './App.css';
 const StoryPageWithItem = withItem(StoryPage);
 
 class App extends Component {
+  state = {
+    storyIds: [],
+  };
+
   componentDidMount() {
-    fetchTopStories().then(this.props.fetchedTopStories);
+    fetchTopStories().then(storyIds => {
+      this.setState(() => ({
+        storyIds,
+      }));
+    });
   }
 
   render() {
@@ -30,12 +34,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => (
-                <Stories
-                  storedStories={this.props.storedStories}
-                  storyIds={this.props.topStories}
-                />
-              )}
+              render={() => <Stories storyIds={this.state.storyIds} />}
             />
             <Route
               path="/story/:id"
@@ -50,15 +49,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ topStories, storedStories }) => {
-  return {
-    topStories,
-    storedStories,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(actionCreators, dispatch);
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default App;
