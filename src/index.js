@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
 import App from './components/App/App';
-// import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 import './styles/pagination.css';
 
@@ -18,4 +18,5 @@ render(Root, document.getElementById('root'));
 
 ReactGA.initialize('UA-39752905-6');
 ReactGA.pageview(window.location.pathname + window.location.search);
-// registerServiceWorker();
+
+registerServiceWorker();
