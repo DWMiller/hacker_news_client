@@ -17,11 +17,11 @@ export default class Story extends Component {
     return (
       <div className="story">
         <h2 className="story__title">
-          <span>{title} </span>
-          <span> - </span>
           <a href={url}>
             <ExternalLinkAlt />
           </a>
+          <span> - </span>
+          <span>{title} </span>
         </h2>
         <p className="story__summary">
           <span className="story__by">
