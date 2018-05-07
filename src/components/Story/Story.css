@@ -1,9 +1,32 @@
 .story {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+
+  padding: 10px 60px 10px 10px;
+  background: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  border-left: 5px solid rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 5px;
 }
 
 .story__title {
+  font-weight: bold;
+  font-family: serif;
+  font-size: 1.25em;
   margin: 0;
+}
+
+.story__title a {
+  white-space: normal;
+  text-decoration: none;
+  color: black;
+}
+
+.story__title a svg {
+  color: #4a913c;
+}
+
+.story__title a:visited svg {
+  color: grey;
 }
 
 .story__summary {
