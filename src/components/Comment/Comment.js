@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import sanitizeHtml from 'sanitize-html';
 import Timestamp from 'react-timestamp';
+import { getAlias } from '../../aliaser';
 
 import { commentType } from '../../types';
 import Comments from '../Comments';
@@ -13,6 +14,7 @@ class Comment extends PureComponent {
     const cleanedText = props.deleted ? 'Deleted' : sanitizeHtml(props.text);
 
     this.state = {
+      alias: getAlias(props.by),
       displayedChildren: 5,
       minimized: false,
       cleanedText,
@@ -49,7 +51,9 @@ class Comment extends PureComponent {
             {this.state.minimized ? '[ + ]' : '[ - ]'}
           </span>
 
-          <span className="comment__by">{this.props.by}</span>
+          <span className="comment__by" data-original-name={this.props.by}>
+            {this.state.alias}
+          </span>
           <span className="comment__time">
             <Timestamp time={this.props.time} />{' '}
           </span>

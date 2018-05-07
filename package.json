@@ -13,6 +13,7 @@
     "react-scripts": "1.1.4",
     "react-timestamp": "^4.4.0",
     "sanitize-html": "^1.18.2",
+    "sillyname": "^0.1.0",
     "url-parse": "^1.4.0"
   },
   "scripts": {

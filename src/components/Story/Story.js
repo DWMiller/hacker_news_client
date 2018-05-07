@@ -29,8 +29,9 @@ export default class Story extends PureComponent {
           <span className="story__hostname">
             (<a href={hostname}>{hostname}</a>) |{' '}
           </span>
-          <span className="story__by">Posted by {by} </span>
-          <Timestamp className="story__time" time={time} />
+          <span className="story__time">
+            Posted <Timestamp time={time} />
+          </span>
           {' | '}
           <Link className="story__commentCount" to={`/story/${id}`}>
             {commentCount} Comments
