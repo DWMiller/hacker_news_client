@@ -7,8 +7,8 @@ const config = {
   },
 };
 
-export const fetchTopStories = async () =>
-  await fetch(`${endPoint}/topstories.json`, config).then(response =>
+export const fetchStories = async (type = 'top') =>
+  await fetch(`${endPoint}/${type}stories.json`, config).then(response =>
     response.clone().json()
   );
 
