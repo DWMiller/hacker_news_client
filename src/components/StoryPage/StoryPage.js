@@ -2,21 +2,17 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import Story from '../Story/Story';
-import Comments from '../Comments/Comments';
+
+import withMore from '../../helpers/withMore';
+import withItem from '../../helpers/withItem';
+
+import Comment from '../Comment/Comment';
 
 import './StoryPage.css';
 
+const CommentList = withMore(withItem(Comment));
+
 class StoryPage extends PureComponent {
-  state = {
-    displayedComments: 5,
-  };
-
-  loadMore = () => {
-    this.setState(state => ({
-      displayedComments: state.displayedComments + 5,
-    }));
-  };
-
   render() {
     const { kids: commentIds = [] } = this.props;
 
@@ -24,16 +20,7 @@ class StoryPage extends PureComponent {
       <div className="storyPage">
         <Story {...this.props} />
         <div className="comments">
-          <Comments
-            commentIds={commentIds.slice(0, this.state.displayedComments)}
-          />
-
-          {this.state.displayedComments < commentIds.length && (
-            <a className="comments__loadButton" onClick={this.loadMore}>
-              Load More - {commentIds.length - this.state.displayedComments}{' '}
-              Remaining
-            </a>
-          )}
+          <CommentList items={commentIds} />
         </div>
       </div>
     );

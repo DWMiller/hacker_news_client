@@ -12,7 +12,7 @@ import './Story.css';
 
 export default class Story extends PureComponent {
   render() {
-    const { id, title, time, url, by, kids } = this.props;
+    const { id, title, time, url, kids } = this.props;
     const { hostname } = URL(url);
 
     const commentCount = kids ? kids.length - 1 : 0;

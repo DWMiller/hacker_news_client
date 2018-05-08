@@ -4,8 +4,10 @@ import Timestamp from 'react-timestamp';
 import { getAlias } from '../../aliaser';
 
 import { commentType } from '../../types';
-import Comments from '../Comments';
 import './Comment.css';
+
+import withMore from '../../helpers/withMore';
+import withItem from '../../helpers/withItem';
 
 class Comment extends PureComponent {
   constructor(props) {
@@ -15,17 +17,10 @@ class Comment extends PureComponent {
 
     this.state = {
       alias: getAlias(props.by),
-      displayedChildren: 5,
       minimized: false,
       cleanedText,
     };
   }
-
-  loadMore = () => {
-    this.setState(state => ({
-      displayedChildren: state.displayedChildren + 5,
-    }));
-  };
 
   toggleMinimized = () => {
     this.setState({
@@ -33,17 +28,8 @@ class Comment extends PureComponent {
     });
   };
 
-  renderChildComments(commentIds) {
-    return (
-      <div className="comment__children">
-        <Comments commentIds={commentIds} />
-      </div>
-    );
-  }
-
   render() {
     const { kids: commentIds = [] } = this.props;
-
     return (
       <div className="comment">
         <div className="comment__header">
@@ -70,22 +56,18 @@ class Comment extends PureComponent {
           />
         )}
 
-        {!this.state.minimized &&
-          this.renderChildComments(
-            commentIds.slice(0, this.state.displayedChildren)
-          )}
-
-        {!this.state.minimized &&
-          this.state.displayedChildren < commentIds.length && (
-            <a className="comments__loadButton" onClick={this.loadMore}>
-              Load More - {commentIds.length - this.state.displayedChildren}{' '}
-              Remaining
-            </a>
-          )}
+        {!this.state.minimized && (
+          <div className="comment__children">
+            <CommentList items={commentIds} />
+          </div>
+        )}
       </div>
     );
   }
 }
+
+//TODO - this is annoying to have declared after the class, restructure things
+const CommentList = withMore(withItem(Comment));
 
 Comment.propTypes = { ...commentType };
 

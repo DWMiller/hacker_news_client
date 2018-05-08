@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 
-.comments__loadButton {
+.comments .loadButton {
   cursor: pointer;
   text-decoration: underline;
 }

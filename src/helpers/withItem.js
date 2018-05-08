@@ -18,7 +18,7 @@ export default WrappedComponent => {
 
     componentDidMount() {
       this.fetching = true;
-      fetchItem(this.props.itemId).then(this.itemFetched);
+      fetchItem(this.props.item).then(this.itemFetched);
     }
 
     componentWillUnmount() {
