@@ -37,7 +37,7 @@ class Stories extends PureComponent {
 
   renderStories(storyIds) {
     return storyIds.map(storyId => (
-      <StoryWithItem key={storyId} itemId={storyId} />
+      <StoryWithItem key={storyId} item={storyId} />
     ));
   }
 
