@@ -16,9 +16,19 @@ export default WrappedComponent => {
       }
     };
 
-    componentDidMount() {
+    startFetch() {
       this.fetching = true;
       fetchItem(this.props.item).then(this.itemFetched);
+    }
+
+    componentDidMount() {
+      this.startFetch();
+    }
+
+    componentDidUpdate(prevProps) {
+      if (this.props.item !== prevProps.item) {
+        this.startFetch();
+      }
     }
 
     componentWillUnmount() {
