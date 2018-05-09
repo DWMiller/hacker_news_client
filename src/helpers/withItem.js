@@ -27,7 +27,7 @@ export default WrappedComponent => {
 
     render() {
       if (this.state.item) {
-        return <WrappedComponent {...this.state.item} />;
+        return <WrappedComponent {...this.props} {...this.state.item} />;
       } else {
         return <div className="loading">...Loading</div>;
       }

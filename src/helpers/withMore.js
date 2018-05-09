@@ -15,7 +15,7 @@ export default WrappedComponent => {
     renderItems(items) {
       return items.map(item => {
         const key = item.id ? item.id : item;
-        return <WrappedComponent key={key} item={item} />;
+        return <WrappedComponent {...this.props} key={key} item={item} />;
       });
     }
 
