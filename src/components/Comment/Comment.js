@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Timestamp from 'react-timestamp';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
 
 import sanitizeHtml from 'sanitize-html';
@@ -81,10 +82,12 @@ class Comment extends PureComponent {
         {showChildren &&
           !isTooDeep && (
             <div className="comment__children">
-              <CommentList
-                items={commentIds}
-                depth={this.props.depth + 1 || 1}
-              />
+              <LazyLoad height={400} offset={100} once>
+                <CommentList
+                  items={commentIds}
+                  depth={this.props.depth + 1 || 1}
+                />
+              </LazyLoad>
             </div>
           )}
 
