@@ -13,13 +13,15 @@ import withMore from '../../helpers/withMore';
 import withItem from '../../helpers/withItem';
 
 class Comment extends PureComponent {
-  constructor(props) {
-    super(props);
+  state = {};
 
-    const cleanedText = props.deleted ? 'Deleted' : sanitizeHtml(props.text);
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const cleanedText = nextProps.deleted
+      ? 'Deleted'
+      : sanitizeHtml(nextProps.text);
 
-    this.state = {
-      alias: getAlias(props.by),
+    return {
+      alias: getAlias(nextProps.by),
       minimized: false,
       cleanedText,
     };

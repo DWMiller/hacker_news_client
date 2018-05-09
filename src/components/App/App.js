@@ -13,7 +13,6 @@ import CommentPage from '../CommentPage/CommentPage';
 import './App.css';
 
 const StoryPageWithItem = withItem(StoryPage);
-const CommentPageWithItem = withItem(CommentPage);
 
 class App extends Component {
   render() {
@@ -32,7 +31,7 @@ class App extends Component {
             <Route
               path="/comment/:id"
               render={({ match }) => (
-                <CommentPageWithItem item={parseInt(match.params.id, 10)} />
+                <CommentPage item={parseInt(match.params.id, 10)} />
               )}
             />
             <Redirect from="*" to="/stories/top" />
