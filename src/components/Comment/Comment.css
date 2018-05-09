@@ -48,6 +48,13 @@
   margin-top: 1em;
 }
 
+.comment__chainExtensionLink {
+  display: block;
+  margin-top: 1em;
+  text-align: right;
+  text-decoration: none;
+}
+
 @media (min-width: 800px) {
   .comment__children {
     margin-left: 2em;

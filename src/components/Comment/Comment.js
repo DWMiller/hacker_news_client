@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
-import sanitizeHtml from 'sanitize-html';
 import Timestamp from 'react-timestamp';
+import { Link } from 'react-router-dom';
+import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
+
+import sanitizeHtml from 'sanitize-html';
 import { getAlias } from '../../aliaser';
 
 import { commentType } from '../../types';
@@ -30,6 +33,9 @@ class Comment extends PureComponent {
 
   render() {
     const { kids: commentIds = [] } = this.props;
+
+    const isTooDeep = this.props.depth ? this.props.depth > 5 : false;
+
     const showChildren = !this.state.minimized && commentIds.length > 0;
 
     return (
@@ -53,6 +59,14 @@ class Comment extends PureComponent {
           <span className="comment__replyCount">
             {commentIds.length} Replies
           </span>
+
+          <Link
+            className="comment__permalink"
+            title="Open a new page starting at this comment"
+            to={`/comment/${this.props.id}`}
+          >
+            <ExternalLinkAlt />
+          </Link>
         </div>
 
         {!this.state.minimized && (
@@ -62,11 +76,25 @@ class Comment extends PureComponent {
           />
         )}
 
-        {showChildren && (
-          <div className="comment__children">
-            <CommentList items={commentIds} />
-          </div>
-        )}
+        {showChildren &&
+          !isTooDeep && (
+            <div className="comment__children">
+              <CommentList
+                items={commentIds}
+                depth={this.props.depth + 1 || 1}
+              />
+            </div>
+          )}
+
+        {showChildren &&
+          isTooDeep && (
+            <Link
+              className="comment__chainExtensionLink"
+              to={`/comment/${this.props.id}`}
+            >
+              Read more of this conversation →
+            </Link>
+          )}
       </div>
     );
   }
