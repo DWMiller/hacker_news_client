@@ -11,6 +11,17 @@
   margin-bottom: 1em;
 }
 
+.comment--minimized {
+  box-shadow: none;
+  color: gray;
+  font-size: 0.75em;
+  border: none;
+}
+
+.comment--minimized .comment__header {
+  margin-bottom: 0;
+}
+
 .comment__time,
 .comment__by,
 .comment__replyCount,

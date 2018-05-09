@@ -30,8 +30,14 @@ class Comment extends PureComponent {
 
   render() {
     const { kids: commentIds = [] } = this.props;
+    const showChildren = !this.state.minimized && commentIds.length > 0;
+
     return (
-      <div className="comment">
+      <div
+        className={
+          'comment' + (this.state.minimized ? ' comment--minimized' : '')
+        }
+      >
         <div className="comment__header">
           <span onClick={this.toggleMinimized} className="comment__toggle">
             {this.state.minimized ? '[ + ]' : '[ - ]'}
@@ -56,7 +62,7 @@ class Comment extends PureComponent {
           />
         )}
 
-        {!this.state.minimized && (
+        {showChildren && (
           <div className="comment__children">
             <CommentList items={commentIds} />
           </div>
