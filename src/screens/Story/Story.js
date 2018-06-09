@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withMore from '../../utils/withMore';
-import withItem from '../../utils/withItem';
+import withMore from 'utils/withMore';
+import withItem from 'utils/withItem';
 
-import Comment from '../../components/Comment/Comment';
-import Story from '../../components/Story/Story';
+import Comment from 'components/Comment/Comment';
+import Story from 'components/Story/Story';
 
 const CommentList = withMore(withItem(Comment));
 

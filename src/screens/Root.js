@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import withItem from '../utils/withItem';
+import withItem from 'utils/withItem';
 
-import ScreensStories from '../screens/Stories/Stories';
-import ScreensComments from '../screens/Comments/Comments';
-import ScreensStory from '../screens/Story/Story';
+import ScreensStories from 'screens/Stories/Stories';
+import ScreensComments from 'screens/Comments/Comments';
+import ScreensStory from 'screens/Story/Story';
 
 const ScreensStoryWithItem = withItem(ScreensStory);
 

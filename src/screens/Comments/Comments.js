@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import withItem from '../../utils/withItem';
+import withItem from 'utils/withItem';
 
-import Comment from '../../components/Comment/Comment';
+import Comment from 'components/Comment/Comment';
 
 const CommentWithItem = withItem(Comment);
 

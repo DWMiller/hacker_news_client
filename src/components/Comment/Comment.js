@@ -3,15 +3,15 @@ import Timestamp from 'react-timestamp';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
-
 import sanitizeHtml from 'sanitize-html';
-import { getAlias } from '../../aliaser';
 
-import { commentType } from '../../types';
+import { getAlias } from 'utils/aliaser';
+import { commentType } from 'types';
+
 import './Comment.css';
 
-import withMore from '../../utils/withMore';
-import withItem from '../../utils/withItem';
+import withMore from 'utils/withMore';
+import withItem from 'utils/withItem';
 
 class Comment extends PureComponent {
   state = {};

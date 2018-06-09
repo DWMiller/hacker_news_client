@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { fetchStories } from '../../api';
+import { fetchStories } from 'api';
 
-import Stories from '../../components/Stories/Stories';
+import Stories from 'components/Stories/Stories';
 
 export class ScreensStories extends Component {
   state = {

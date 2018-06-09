@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Header from '../Header/Header';
-
-import ScreensRooot from '../../screens/Root';
+import ScreensRooot from 'screens/Root';
+import Header from 'components/Header/Header';
 
 const AppWrapper = styled.div`
   margin: 1em;
