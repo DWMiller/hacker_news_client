@@ -10,8 +10,8 @@ import { getAlias } from '../../aliaser';
 import { commentType } from '../../types';
 import './Comment.css';
 
-import withMore from '../../helpers/withMore';
-import withItem from '../../helpers/withItem';
+import withMore from '../../utils/withMore';
+import withItem from '../../utils/withItem';
 
 class Comment extends PureComponent {
   state = {};

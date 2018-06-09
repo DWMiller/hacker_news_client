@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Story from '../Story';
-import withItem from '../../helpers/withItem';
+import withItem from '../../utils/withItem';
 
 import Pagination from 'react-js-pagination';
 
-import './Stories.css';
-
 const StoryWithItem = withItem(Story);
+
+const StoriesWrapper = styled.div``;
 
 class Stories extends PureComponent {
   pageSize = 10;
@@ -49,11 +50,11 @@ class Stories extends PureComponent {
       end >= this.props.storyIds.length ? this.props.storyIds.length - 1 : end;
 
     return (
-      <div className="stories">
+      <StoriesWrapper>
         {this.renderPagination()}
         {this.renderStories(this.props.storyIds.slice(start, end))}
         {this.renderPagination()}
-      </div>
+      </StoriesWrapper>
     );
   }
 }

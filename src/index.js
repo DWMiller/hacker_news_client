@@ -6,6 +6,7 @@ import ReactGA from 'react-ga';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
+import './styles/global.css';
 import './styles/pagination.css';
 
 const Root = (

@@ -1,43 +1,30 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-
-import withItem from '../../helpers/withItem';
+import styled from 'styled-components';
 
 import Header from '../Header/Header';
 
-import StoriesContainer from '../Stories/StoriesContainer';
+import ScreensRooot from '../../screens/Root';
 
-import StoryPage from '../StoryPage/StoryPage';
-import CommentPage from '../CommentPage/CommentPage';
+const AppWrapper = styled.div`
+  margin: 1em;
+  max-width: 800px;
 
-import './App.css';
+  @media (min-width: 800px) {
+    margin: 1em auto;
+  }
+`;
 
-const StoryPageWithItem = withItem(StoryPage);
+const Page = styled.div``;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <AppWrapper>
         <Header />
-        <div className="page">
-          <Switch>
-            <Route exact path="/stories/:type" component={StoriesContainer} />
-            <Route
-              path="/story/:id"
-              render={({ match }) => (
-                <StoryPageWithItem item={parseInt(match.params.id, 10)} />
-              )}
-            />
-            <Route
-              path="/comment/:id"
-              render={({ match }) => (
-                <CommentPage item={parseInt(match.params.id, 10)} />
-              )}
-            />
-            <Redirect from="*" to="/stories/top" />
-          </Switch>
-        </div>
-      </div>
+        <Page>
+          <ScreensRooot />
+        </Page>
+      </AppWrapper>
     );
   }
 }

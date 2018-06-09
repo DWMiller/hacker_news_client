@@ -1,6 +1,14 @@
 import React, { PureComponent } from 'react';
 import Timestamp from 'react-timestamp';
-import { Link } from 'react-router-dom';
+
+import {
+  StoryWrapper,
+  StoryTitle,
+  StorySummary,
+  StoryHostname,
+  StoryTime,
+  StoryCommentCount,
+} from './components';
 
 import URL from 'url-parse';
 
@@ -8,9 +16,7 @@ import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
 
 import { storyType } from '../../types';
 
-import './Story.css';
-
-export default class Story extends PureComponent {
+export class Story extends PureComponent {
   render() {
     const { id, title, time, url, kids } = this.props;
     const { hostname } = URL(url);
@@ -18,26 +24,26 @@ export default class Story extends PureComponent {
     const commentCount = kids ? kids.length - 1 : 0;
 
     return (
-      <div className="story">
-        <h2 className="story__title">
+      <StoryWrapper>
+        <StoryTitle>
           <a href={url}>
             <ExternalLinkAlt />
             <span> {title}</span>
           </a>
-        </h2>
-        <p className="story__summary">
-          <span className="story__hostname">
+        </StoryTitle>
+        <StorySummary>
+          <StoryHostname>
             (<a href={hostname}>{hostname}</a>) |{' '}
-          </span>
-          <span className="story__time">
+          </StoryHostname>
+          <StoryTime>
             Posted <Timestamp time={time} />
-          </span>
+          </StoryTime>
           {' | '}
-          <Link className="story__commentCount" to={`/story/${id}`}>
+          <StoryCommentCount to={`/story/${id}`}>
             {commentCount} Comments
-          </Link>
-        </p>
-      </div>
+          </StoryCommentCount>
+        </StorySummary>
+      </StoryWrapper>
     );
   }
 }
@@ -45,3 +51,5 @@ export default class Story extends PureComponent {
 Story.propTypes = {
   ...storyType,
 };
+
+export default Story;

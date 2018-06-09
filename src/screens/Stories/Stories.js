@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import { fetchStories } from '../../api';
 
-import Stories from '../Stories/Stories';
+import Stories from '../../components/Stories/Stories';
 
-export default class StoriesContainer extends Component {
+export class ScreensStories extends Component {
   state = {
     storyIds: [],
   };
@@ -30,3 +30,5 @@ export default class StoriesContainer extends Component {
     return <Stories storyIds={this.state.storyIds} />;
   }
 }
+
+export default ScreensStories;

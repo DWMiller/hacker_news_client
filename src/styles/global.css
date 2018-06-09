@@ -1,5 +1,5 @@
 body {
-  background: url('../../assets/sayagata-400px.png');
+  background: url('../assets/sayagata-400px.png');
   margin: 0;
   padding: 0;
 
@@ -25,15 +25,4 @@ a {
 .loading {
   padding: 1em;
   margin-bottom: 1em;
-}
-
-.App {
-  margin: 1em;
-  max-width: 800px;
-}
-
-@media (min-width: 800px) {
-  .App {
-    margin: 1em auto;
-  }
 }
