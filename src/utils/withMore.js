@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
+import styled from 'styled-components';
 
-export default WrappedComponent => {
+const DefaultLoadMoreButton = styled.button``;
+
+export default (WrappedComponent, LoadMoreButton = DefaultLoadMoreButton) => {
   return class extends PureComponent {
     state = {
       displayedItems: 5,
@@ -29,10 +32,10 @@ export default WrappedComponent => {
               this.props.items.slice(0, this.state.displayedItems)
             )}
           {isMoreToLoad && (
-            <a className="loadButton" onClick={this.loadMore}>
+            <LoadMoreButton onClick={this.loadMore}>
               Load More - {this.props.items.length - this.state.displayedItems}{' '}
               Remaining
-            </a>
+            </LoadMoreButton>
           )}
         </React.Fragment>
       );
