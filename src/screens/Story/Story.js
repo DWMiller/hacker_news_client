@@ -8,7 +8,9 @@ import withItem from 'utils/withItem';
 import Comment from 'components/Comment/Comment';
 import Story from 'components/Story/Story';
 
-const CommentList = withMore(withItem(Comment));
+import { LoadMoreButton } from 'components/Comment/components';
+
+const CommentList = withMore(withItem(Comment), LoadMoreButton);
 
 const ScreensStoryWrapper = styled.div`
   margin-bottom: 1em;
