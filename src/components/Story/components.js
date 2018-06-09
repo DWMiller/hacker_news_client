@@ -1,5 +1,8 @@
-import styled from 'styled-components';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
 
 export const StoryWrapper = styled.div`
   margin-bottom: 0.5em;
@@ -10,7 +13,7 @@ export const StoryWrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 5px;
 `;
 
-export const StoryTitle = styled.h2`
+const StoryTitleWrapper = styled.h2`
   font-weight: bold;
   font-family: serif;
   font-size: 1.25em;
@@ -30,6 +33,15 @@ export const StoryTitle = styled.h2`
     color: grey;
   }
 `;
+
+export const StoryTitle = ({ title, url }) => (
+  <StoryTitleWrapper>
+    <a href={url}>
+      <ExternalLinkAlt />
+      <span> {title}</span>
+    </a>
+  </StoryTitleWrapper>
+);
 
 export const StorySummary = styled.p`
   margin: 0;

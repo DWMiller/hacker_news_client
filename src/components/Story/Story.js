@@ -12,8 +12,6 @@ import {
 
 import URL from 'url-parse';
 
-import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
-
 import { storyType } from '../../types';
 
 export class Story extends PureComponent {
@@ -25,12 +23,7 @@ export class Story extends PureComponent {
 
     return (
       <StoryWrapper>
-        <StoryTitle>
-          <a href={url}>
-            <ExternalLinkAlt />
-            <span> {title}</span>
-          </a>
-        </StoryTitle>
+        <StoryTitle title={title} url={url} />
         <StorySummary>
           <StoryHostname>
             (<a href={hostname}>{hostname}</a>) |{' '}
