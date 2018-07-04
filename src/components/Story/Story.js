@@ -21,12 +21,14 @@ export class Story extends PureComponent {
 
     const commentCount = kids ? kids.length - 1 : 0;
 
+    console.log(hostname);
+
     return (
       <StoryWrapper>
         <StoryTitle title={title} url={url} />
         <StorySummary>
           <StoryHostname>
-            (<a href={hostname}>{hostname}</a>) |{' '}
+            (<a href={`//${hostname}`}>{hostname}</a>) |{' '}
           </StoryHostname>
           <StoryTime>
             Posted <Timestamp time={time} />
