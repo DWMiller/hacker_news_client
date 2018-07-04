@@ -8,6 +8,7 @@ import withMore from 'utils/withMore';
 import withItem from 'utils/withItem';
 
 import {
+  CommentContentContainer,
   CommentWrapper,
   CommentHeader,
   CommentText,
@@ -47,16 +48,19 @@ class Comment extends PureComponent {
 
     return (
       <CommentWrapper isMinimized={this.state.minimized}>
-        <CommentHeader
-          {...this.props}
-          commentIds={commentIds}
-          alias={this.state.alias}
-          isMinimized={this.state.minimized}
-          onToggle={this.toggleMinimized}
-        />
+        <CommentContentContainer isMinimized={this.state.minimized}>
+          <CommentHeader
+            {...this.props}
+            commentIds={commentIds}
+            alias={this.state.alias}
+            isMinimized={this.state.minimized}
+            onToggle={this.toggleMinimized}
+          />
 
-        {!this.state.minimized && <CommentText text={this.state.cleanedText} />}
-
+          {!this.state.minimized && (
+            <CommentText text={this.state.cleanedText} />
+          )}
+        </CommentContentContainer>
         {showChildren &&
           !isTooDeep && (
             <CommentChildrenWrapper>
