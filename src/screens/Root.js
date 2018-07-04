@@ -6,6 +6,7 @@ import withItem from 'utils/withItem';
 import ScreensStories from 'screens/Stories/Stories';
 import ScreensComments from 'screens/Comments/Comments';
 import ScreensStory from 'screens/Story/Story';
+import ContactScreen from 'screens/Contact';
 
 const ScreensStoryWithItem = withItem(ScreensStory);
 
@@ -26,6 +27,7 @@ export default class componentName extends Component {
             <ScreensComments item={parseInt(match.params.id, 10)} />
           )}
         />
+        <Route path="/contact" component={ContactScreen} />
         <Redirect from="*" to="/stories/top" />
       </Switch>
     );

@@ -21,8 +21,6 @@ export class Story extends PureComponent {
 
     const commentCount = kids ? kids.length - 1 : 0;
 
-    console.log(hostname);
-
     return (
       <StoryWrapper>
         <StoryTitle title={title} url={url} />
