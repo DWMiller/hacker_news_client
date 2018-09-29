@@ -6,7 +6,7 @@ import withMore from 'utils/withMore';
 import withItem from 'utils/withItem';
 
 import Comment from 'components/Comment/Comment';
-import Story from 'components/Story/Story';
+import { StoryWithItem } from 'components/Story/Story';
 
 import { LoadMoreButton } from 'components/Comment/components';
 
@@ -16,18 +16,16 @@ const ScreensStoryWrapper = styled.div`
   margin-bottom: 1em;
 `;
 
-const CommentListWrapper = styled.div``;
-
-class ScreensStory extends PureComponent {
+export class ScreensStory extends PureComponent {
   render() {
     const { kids: commentIds = [] } = this.props;
 
     return (
       <ScreensStoryWrapper>
-        <Story {...this.props} />
-        <CommentListWrapper>
+        <StoryWithItem {...this.props} />
+        <div>
           <CommentList items={commentIds} />
-        </CommentListWrapper>
+        </div>
       </ScreensStoryWrapper>
     );
   }
@@ -37,4 +35,4 @@ ScreensStory.propTypes = {
   storyId: PropTypes.number,
 };
 
-export default ScreensStory;
+export default withItem(ScreensStory);

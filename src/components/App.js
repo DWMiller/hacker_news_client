@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import ScreensRooot from 'screens/Root';
-import Header from 'components/Header/Header';
-import Footer from 'components/Footer';
+import { ScreensRoot } from 'screens/Root';
+import Header from './Header';
+import Footer from './Footer';
 
 const AppWrapper = styled.div`
   position: relative;
@@ -24,7 +24,7 @@ class App extends Component {
       <AppWrapper>
         <Header />
         <Page>
-          <ScreensRooot />
+          <ScreensRoot />
         </Page>
         <Footer />
       </AppWrapper>

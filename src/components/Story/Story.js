@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Timestamp from 'react-timestamp';
+import withItem from 'utils/withItem';
 
 import {
   StoryWrapper,
@@ -12,7 +13,7 @@ import {
 
 import URL from 'url-parse';
 
-import { storyType } from '../../types';
+import { storyType } from 'types';
 
 export class Story extends PureComponent {
   render() {
@@ -45,4 +46,4 @@ Story.propTypes = {
   ...storyType,
 };
 
-export default Story;
+export const StoryWithItem = withItem(Story);

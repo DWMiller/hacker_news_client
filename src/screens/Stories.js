@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { fetchStories } from 'api';
 
-import Stories from 'components/Stories/Stories';
+import Stories from 'components/Stories';
 
 export class ScreensStories extends Component {
   state = {
@@ -18,12 +18,11 @@ export class ScreensStories extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.match.params.type !== prevProps.match.params.type)
-      this.fetchStories(this.props.match.params.type);
+    if (this.props.type !== prevProps.type) this.fetchStories(this.props.type);
   }
 
   componentDidMount() {
-    this.fetchStories(this.props.match.params.type);
+    this.fetchStories(this.props.type);
   }
 
   render() {

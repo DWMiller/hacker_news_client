@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'components/NavLink';
 
-import { Button } from 'components/Button';
+import { Button } from './Button';
 
 const FooterContainer = styled.div`
   height: 40px;
@@ -19,7 +19,7 @@ const FooterContainer = styled.div`
 
 const ButtonAsLink = Button.withComponent(NavLink);
 
-const FooterLink = ButtonAsLink.extend`
+const FooterLink = styled(ButtonAsLink)`
   flex: 0;
   text-decoration: none;
 `;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import FaHackerNews from 'react-icons/lib/fa/hacker-news';
+
+import { NavLink } from 'components/NavLink';
 
 const HeaderWrapper = styled.header`
   margin-bottom: 0.5em;

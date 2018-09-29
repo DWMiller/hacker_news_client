@@ -1,32 +1,39 @@
 {
   "name": "hacker_news",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "react-scripts": "2.0.0",
     "prop-types": "^15.6.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-ga": "^2.5.0",
     "react-icons": "^2.2.7",
     "react-js-pagination": "^3.0.2",
     "react-lazyload": "^2.3.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "@reach/router": "^1.2.1",
     "react-timestamp": "^4.4.0",
     "sanitize-html": "^1.18.2",
     "sillyname": "^0.1.0",
-    "styled-components": "^3.3.2",
+    "styled-components": "^3.4.9",
     "url-parse": "^1.4.0"
   },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
+  },
   "scripts": {
-    "start": "cross-env NODE_PATH=src react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env NODE_PATH=src react-scripts build",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "cross-env": "^5.1.6",
-    "react-app-rewire-styled-components": "^3.0.2",
-    "react-app-rewired": "^1.5.2"
-  }
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -1,35 +1,21 @@
-import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Router } from '@reach/router';
 
-import withItem from 'utils/withItem';
-
-import ScreensStories from 'screens/Stories/Stories';
-import ScreensComments from 'screens/Comments/Comments';
-import ScreensStory from 'screens/Story/Story';
+import ScreensStories from 'screens/Stories';
+import ScreensComments from 'screens/Comments';
+import ScreensStory from 'screens/Story';
 import ContactScreen from 'screens/Contact';
 
-const ScreensStoryWithItem = withItem(ScreensStory);
+export const ScreensRoot = () => (
+  <Router>
+    <ScreensStories type="top" path="/" />
 
-export default class componentName extends Component {
-  render() {
-    return (
-      <Switch>
-        <Route exact path="/stories/:type" component={ScreensStories} />
-        <Route
-          path="/story/:id"
-          render={({ match }) => (
-            <ScreensStoryWithItem item={parseInt(match.params.id, 10)} />
-          )}
-        />
-        <Route
-          path="/comment/:id"
-          render={({ match }) => (
-            <ScreensComments item={parseInt(match.params.id, 10)} />
-          )}
-        />
-        <Route path="/contact" component={ContactScreen} />
-        <Redirect from="*" to="/stories/top" />
-      </Switch>
-    );
-  }
-}
+    <ScreensStories exact path="/stories/:type" />
+
+    <ScreensStory path="/story/:item" />
+
+    <ScreensComments path="/comment/:item" />
+
+    <ContactScreen path="/contact" />
+  </Router>
+);

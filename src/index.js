@@ -1,19 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+
 import ReactGA from 'react-ga';
 
-import App from './components/App/App';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 import './styles/global.css';
 import './styles/pagination.css';
 
-const Root = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+const Root = <App />;
 
 render(Root, document.getElementById('root'));
 

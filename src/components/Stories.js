@@ -1,15 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-import Story from '../Story';
-import withItem from '../../utils/withItem';
-
 import Pagination from 'react-js-pagination';
 
-const StoryWithItem = withItem(Story);
-
-const StoriesWrapper = styled.div``;
+import { Story } from './Story/Story';
+import { WithItem } from 'utils/withItemRP';
 
 class Stories extends PureComponent {
   pageSize = 10;
@@ -38,7 +32,15 @@ class Stories extends PureComponent {
 
   renderStories(storyIds) {
     return storyIds.map(storyId => (
-      <StoryWithItem key={storyId} item={storyId} />
+      <WithItem key={storyId} item={storyId}>
+        {({ item, loading }) => {
+          if (loading) {
+            return <div className="loading">...Loading</div>;
+          }
+
+          return <Story {...item} />;
+        }}
+      </WithItem>
     ));
   }
 
@@ -50,11 +52,11 @@ class Stories extends PureComponent {
       end >= this.props.storyIds.length ? this.props.storyIds.length - 1 : end;
 
     return (
-      <StoriesWrapper>
+      <div>
         {this.renderPagination()}
         {this.renderStories(this.props.storyIds.slice(start, end))}
         {this.renderPagination()}
-      </StoriesWrapper>
+      </div>
     );
   }
 }
