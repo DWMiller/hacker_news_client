@@ -18,25 +18,22 @@ import {
 } from './components';
 
 class Comment extends PureComponent {
-  state = {};
+  constructor(props) {
+    super(props);
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    // TODO - this should be moved to parent component
-    const cleanedText = nextProps.deleted
-      ? 'Deleted'
-      : sanitizeHtml(nextProps.text);
+    const cleanedText = props.deleted ? 'Deleted' : sanitizeHtml(props.text);
 
-    return {
-      alias: getAlias(nextProps.by),
+    this.state = {
       minimized: false,
+      alias: getAlias(props.by),
       cleanedText,
     };
   }
 
   toggleMinimized = () => {
-    this.setState({
+    this.setState(() => ({
       minimized: !this.state.minimized,
-    });
+    }));
   };
 
   render() {
