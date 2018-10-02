@@ -3,20 +3,20 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "react-scripts": "2.0.0",
-    "prop-types": "^15.6.1",
+    "react-scripts": "2.0.3",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-ga": "^2.5.0",
-    "react-icons": "^2.2.7",
+    "react-ga": "^2.5.3",
+    "react-icons": "^3.1.0",
     "react-js-pagination": "^3.0.2",
     "react-lazyload": "^2.3.0",
     "@reach/router": "^1.2.1",
     "react-timestamp": "^4.4.0",
-    "sanitize-html": "^1.18.2",
+    "sanitize-html": "^1.19.1",
     "sillyname": "^0.1.0",
     "styled-components": "^3.4.9",
-    "url-parse": "^1.4.0"
+    "url-parse": "^1.4.3"
   },
   "devDependencies": {
     "cross-env": "^5.2.0"
