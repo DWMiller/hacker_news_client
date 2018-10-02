@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
-import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
+import {FaExternalLinkAlt} from 'react-icons/fa';
 
 export const StoryWrapper = styled.div`
   margin-bottom: 0.5em;
@@ -36,7 +36,7 @@ const StoryTitleWrapper = styled.h2`
 export const StoryTitle = ({ title, url }) => (
   <StoryTitleWrapper>
     <a href={url}>
-      <ExternalLinkAlt />
+      <FaExternalLinkAlt />
       <span> {title}</span>
     </a>
   </StoryTitleWrapper>

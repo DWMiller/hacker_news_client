@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import Timestamp from 'react-timestamp';
-import ExternalLinkAlt from 'react-icons/lib/fa/external-link';
+import {FaExternalLinkAlt} from 'react-icons/fa';
 
 const CommentHeaderWrapper = styled.div`
   margin-bottom: ${props => (props.isMinimized ? '0' : '1em')};
@@ -69,7 +69,7 @@ export const CommentHeader = ({
       title="Open a new page starting at this comment"
       to={`/comment/${id}`}
     >
-      <ExternalLinkAlt />
+      <FaExternalLinkAlt />
     </CommentPermaLink>
   </CommentHeaderWrapper>
 );

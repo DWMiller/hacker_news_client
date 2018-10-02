@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import FaHackerNews from 'react-icons/lib/fa/hacker-news';
+import {FaHackerNews} from 'react-icons/fa';
 
 import { NavLink } from 'components/NavLink';
 
