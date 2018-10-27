@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 
-import { Story } from './Story/Story';
+import { PaginationStyles } from './styles/PaginationStyles'
 import { WithItem } from 'utils/withItemRP';
+
+import { Story } from './Story/Story';
 
 class Stories extends PureComponent {
   pageSize = 10;
@@ -52,11 +54,11 @@ class Stories extends PureComponent {
       end >= this.props.storyIds.length ? this.props.storyIds.length - 1 : end;
 
     return (
-      <div>
+      <PaginationStyles>
         {this.renderPagination()}
         {this.renderStories(this.props.storyIds.slice(start, end))}
         {this.renderPagination()}
-      </div>
+      </PaginationStyles>
     );
   }
 }

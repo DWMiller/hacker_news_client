@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from '@reach/router';
-import Timestamp from 'react-timestamp';
-import {FaExternalLinkAlt} from 'react-icons/fa';
+import React from "react";
+import styled, { css } from "styled-components";
+import { Link } from "@reach/router";
+import Timestamp from "react-timestamp";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const CommentHeaderWrapper = styled.div`
-  margin-bottom: ${props => (props.isMinimized ? '0' : '1em')};
+  margin-bottom: ${props => (props.isMinimized ? "0" : "1em")};
 `;
 
 const CommentToggle = styled.span`
@@ -30,17 +30,22 @@ const CommentPermaLink = styled(Link)``;
 export const CommentWrapper = styled.div`
   margin-bottom: 1em;
   word-wrap: break-word;
-  color: ${props => (props.isMinimized ? 'gray' : 'inherit')};
-  font-size: ${props => (props.isMinimized ? '0.75' : 'inherit')};
+  color: ${props => (props.isMinimized ? "gray" : "inherit")};
+  font-size: ${props => (props.isMinimized ? "0.75" : "inherit")};
 `;
 
 export const CommentContentContainer = styled.div`
   background: rgb(255, 255, 255);
   padding: 1em;
   border-bottom: 1px solid rgb(204, 204, 204);
-  border: ${props => (props.isMinimized ? 'none' : 'invalid')};
-  box-shadow: ${props =>
-    props.isMinimized ? 'none' : 'rgba(0, 0, 0, 0.3) 1px 1px 5px'};
+  box-shadow: ${props => props.theme.shadow};
+
+  ${props =>
+    props.isMinimized &&
+    css`
+      box-shadow: none;
+      border: none;
+    `};
 `;
 
 export const CommentHeader = ({
@@ -50,17 +55,17 @@ export const CommentHeader = ({
   commentIds,
   by,
   alias,
-  id,
+  id
 }) => (
   <CommentHeaderWrapper isMinimized={isMinimized}>
     <CommentToggle onClick={onToggle}>
-      {isMinimized ? '[ + ]' : '[ - ]'}
+      {isMinimized ? "[ + ]" : "[ - ]"}
     </CommentToggle>
 
     <CommentBy data-original-name={by}>{alias}</CommentBy>
 
     <CommentTime>
-      <Timestamp time={time} />{' '}
+      <Timestamp time={time} />{" "}
     </CommentTime>
 
     <CommentReplyCount>{commentIds.length} Replies</CommentReplyCount>

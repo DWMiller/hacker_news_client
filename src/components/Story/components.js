@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from '@reach/router';
-import styled from 'styled-components';
-import {FaExternalLinkAlt} from 'react-icons/fa';
+import React from "react";
+import { Link } from "@reach/router";
+import styled from "styled-components";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const StoryWrapper = styled.div`
   margin-bottom: 0.5em;
@@ -9,7 +9,7 @@ export const StoryWrapper = styled.div`
   background: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(204, 204, 204);
   border-left: 5px solid rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 5px;
+  box-shadow: ${props => props.theme.shadow};
 `;
 
 const StoryTitleWrapper = styled.h2`
@@ -21,7 +21,7 @@ const StoryTitleWrapper = styled.h2`
   a {
     white-space: normal;
     text-decoration: none;
-    color: black;
+    color: ${props=>props.theme.black};
   }
 
   a svg {

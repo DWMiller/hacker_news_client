@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
-import { ScreensRoot } from 'screens/Root';
-import Header from './Header';
-import Footer from './Footer';
+import { ScreensRoot } from "screens/Root";
+import Header from "./Header";
+import Footer from "./Footer";
+
+const theme = {
+  black: "#393939",
+  grey: "#3A3A3A",
+  green: '#4a913c',
+  shadow: "rgba(0,0,0,0.3) 1px 1px 3px 0px;"
+};
 
 const AppWrapper = styled.div`
   position: relative;
@@ -16,18 +23,64 @@ const AppWrapper = styled.div`
   }
 `;
 
+const GlobalStyles = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+    font-size: 10px;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background: url('../assets/sayagata-400px.png');
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: ${theme.black};
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: serif;
+  }
+
+  a {
+    color: ${theme.green};
+    white-space: nowrap;
+  }
+
+  .loading {
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+`;
+
 const Page = styled.div``;
 
 class App extends Component {
   render() {
     return (
-      <AppWrapper>
-        <Header />
-        <Page>
-          <ScreensRoot />
-        </Page>
-        <Footer />
-      </AppWrapper>
+      <ThemeProvider theme={theme}>
+        <AppWrapper>
+          <GlobalStyles />
+          <Header />
+          <Page>
+            <ScreensRoot />
+          </Page>
+          <Footer />
+        </AppWrapper>
+      </ThemeProvider>
     );
   }
 }

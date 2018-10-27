@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
-import LazyLoad from 'react-lazyload';
-import sanitizeHtml from 'sanitize-html';
+import React, { useState } from "react";
+import LazyLoad from "react-lazyload";
+import sanitizeHtml from "sanitize-html";
 
-import { commentType } from 'types';
-import { getAlias } from 'utils/aliaser';
-import withMore from 'utils/withMore';
-import withItem from 'utils/withItem';
+import { commentType } from "types";
+import { getAlias } from "utils/aliaser";
+import withMore from "utils/withMore";
+import withItem from "utils/withItem";
 
 import {
   CommentContentContainer,
@@ -14,73 +14,55 @@ import {
   CommentText,
   CommentChildrenWrapper,
   ReadMoreLink,
-  LoadMoreButton,
-} from './components';
+  LoadMoreButton
+} from "./components";
 
-class Comment extends PureComponent {
-  constructor(props) {
-    super(props);
+const Comment = React.memo(props => {
+  const [isMinimized, setMinimize] = useState(false);
 
-    const cleanedText = props.deleted ? 'Deleted' : sanitizeHtml(props.text);
+  const { kids: commentIds = [], deleted, text } = props;
+  const alias = getAlias(props.by);
+  const cleanedText = deleted ? "Deleted" : sanitizeHtml(text);
 
-    this.state = {
-      minimized: false,
-      alias: getAlias(props.by),
-      cleanedText,
-    };
-  }
+  const isTooDeep = props.depth ? props.depth > 5 : false;
 
-  toggleMinimized = () => {
-    this.setState(() => ({
-      minimized: !this.state.minimized,
-    }));
-  };
+  const showChildren = !isMinimized && commentIds.length > 0;
 
-  render() {
-    const { kids: commentIds = [] } = this.props;
+  return (
+    <CommentWrapper isMinimized={isMinimized}>
+      <CommentContentContainer isMinimized={isMinimized}>
+        <CommentHeader
+          {...props}
+          commentIds={commentIds}
+          alias={alias}
+          isMinimized={isMinimized}
+          onToggle={() => setMinimize(!isMinimized)}
+        />
 
-    const isTooDeep = this.props.depth ? this.props.depth > 5 : false;
+        {!isMinimized && <CommentText text={cleanedText} />}
+      </CommentContentContainer>
+      {showChildren &&
+        !isTooDeep && (
+          <CommentChildrenWrapper>
+            <LazyLoad height={400} offset={100} once>
+              <CommentList
+                button={LoadMoreButton}
+                items={commentIds}
+                depth={props.depth + 1 || 1}
+              />
+            </LazyLoad>
+          </CommentChildrenWrapper>
+        )}
 
-    const showChildren = !this.state.minimized && commentIds.length > 0;
-
-    return (
-      <CommentWrapper isMinimized={this.state.minimized}>
-        <CommentContentContainer isMinimized={this.state.minimized}>
-          <CommentHeader
-            {...this.props}
-            commentIds={commentIds}
-            alias={this.state.alias}
-            isMinimized={this.state.minimized}
-            onToggle={this.toggleMinimized}
-          />
-
-          {!this.state.minimized && (
-            <CommentText text={this.state.cleanedText} />
-          )}
-        </CommentContentContainer>
-        {showChildren &&
-          !isTooDeep && (
-            <CommentChildrenWrapper>
-              <LazyLoad height={400} offset={100} once>
-                <CommentList
-                  button={LoadMoreButton}
-                  items={commentIds}
-                  depth={this.props.depth + 1 || 1}
-                />
-              </LazyLoad>
-            </CommentChildrenWrapper>
-          )}
-
-        {showChildren &&
-          isTooDeep && (
-            <ReadMoreLink to={`/comment/${this.props.id}`}>
-              Read more of this conversation →
-            </ReadMoreLink>
-          )}
-      </CommentWrapper>
-    );
-  }
-}
+      {showChildren &&
+        isTooDeep && (
+          <ReadMoreLink to={`/comment/${props.id}`}>
+            Read more of this conversation →
+          </ReadMoreLink>
+        )}
+    </CommentWrapper>
+  );
+});
 
 Comment.propTypes = { ...commentType };
 
