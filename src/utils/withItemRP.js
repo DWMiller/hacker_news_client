@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fetchItem } from '../api';
+import { fetchItem } from './api';
 
 export class WithItem extends React.PureComponent {
   fetchInProgress = false;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { fetchStories } from 'api';
+import { fetchStories } from 'utils/api';
 
 import Stories from 'components/Stories';
 

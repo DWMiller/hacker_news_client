@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { fetchItem } from '../api';
+import { fetchItem } from './api';
 
 export default WrappedComponent => {
   return class extends PureComponent {
