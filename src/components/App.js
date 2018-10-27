@@ -39,8 +39,8 @@ const GlobalStyles = createGlobalStyle`
     background: url('../assets/sayagata-400px.png');
     margin: 0;
     padding: 0;
-    font-size: 1.4rem;
-    line-height: 1.6;
+    font-size: 1.5rem;
+    line-height: 1.5;
     color: ${theme.black};
     font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
