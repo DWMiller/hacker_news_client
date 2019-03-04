@@ -1,19 +1,12 @@
 import React, { PureComponent } from 'react';
 import Timestamp from 'react-timestamp';
-import withItem from 'utils/withItem';
-
-import {
-  StoryWrapper,
-  StoryTitle,
-  StorySummary,
-  StoryHostname,
-  StoryTime,
-  StoryCommentCount,
-} from './components';
-
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { Link } from '@reach/router';
 import URL from 'url-parse';
 
 import { storyType } from 'types';
+
+import { StoryWrapper } from './styles';
 
 export class Story extends PureComponent {
   render() {
@@ -24,19 +17,23 @@ export class Story extends PureComponent {
 
     return (
       <StoryWrapper>
-        <StoryTitle title={title} url={url} />
-        <StorySummary>
-          <StoryHostname>
+        <div className="story__title">
+          <a href={url}>
+            <FaExternalLinkAlt />
+            <span> {title}</span>
+          </a>
+        </div>
+
+        <p className="story__summary">
+          <span>
             (<a href={`//${hostname}`}>{hostname}</a>) |{' '}
-          </StoryHostname>
-          <StoryTime>
+          </span>
+          <span>
             Posted <Timestamp time={time} />
-          </StoryTime>
+          </span>
           {' | '}
-          <StoryCommentCount to={`/story/${id}`}>
-            {commentCount} Comments
-          </StoryCommentCount>
-        </StorySummary>
+          <Link to={`/story/${id}`}>{commentCount} Comments</Link>
+        </p>
       </StoryWrapper>
     );
   }
@@ -46,4 +43,4 @@ Story.propTypes = {
   ...storyType,
 };
 
-export const StoryWithItem = withItem(Story);
+export default Story;

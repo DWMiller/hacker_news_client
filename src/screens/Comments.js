@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 
-import withItem from 'utils/withItem';
+import useFetchItem from 'utils/useFetchItem';
 
 import Comment from 'components/Comment/Comment';
 
-const CommentWithItem = withItem(Comment);
+const ScreensComments = React.memo(props => {
+  const [loading, comment] = useFetchItem(props.item);
 
-const ScreensCommentsWrapper = styled.div``;
-
-class ScreensComments extends Component {
-  render() {
-    return (
-      <ScreensCommentsWrapper>
-        <CommentWithItem item={this.props.item} />
-      </ScreensCommentsWrapper>
-    );
+  if (loading) {
+    return <div className="loading">...Loading</div>;
   }
-}
+
+  return <Comment {...comment} />;
+});
 
 export default ScreensComments;

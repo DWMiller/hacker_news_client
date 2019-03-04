@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const DefaultLoadMoreButton = styled.button``;
 
@@ -11,7 +11,7 @@ const renderItems = (items, Component) => {
 };
 
 export default (WrappedComponent, LoadMoreButton = DefaultLoadMoreButton) => {
-  return React.memo((props) => {
+  return React.memo(props => {
     const [displayedItems, setDisplayedItems] = useState(5);
 
     const isMoreToLoad = displayedItems < props.items.length;

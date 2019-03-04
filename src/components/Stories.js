@@ -2,10 +2,24 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 
-import { PaginationStyles } from './styles/PaginationStyles'
+import { PaginationStyles } from './styles/PaginationStyles';
 import { WithItem } from 'utils/withItemRP';
 
 import { Story } from './Story/Story';
+
+const renderStories = storyIds => {
+  return storyIds.map(storyId => (
+    <WithItem key={storyId} item={storyId}>
+      {({ item, loading }) => {
+        if (loading) {
+          return <div className="loading">...Loading</div>;
+        }
+
+        return <Story {...item} />;
+      }}
+    </WithItem>
+  ));
+};
 
 class Stories extends PureComponent {
   pageSize = 10;
@@ -20,31 +34,15 @@ class Stories extends PureComponent {
 
   renderPagination = () => {
     return (
-      <div>
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={this.pageSize}
-          totalItemsCount={this.props.storyIds.length - 1}
-          pageRangeDisplayed={5}
-          onChange={this.handlePageChange}
-        />
-      </div>
+      <Pagination
+        activePage={this.state.activePage}
+        itemsCountPerPage={this.pageSize}
+        totalItemsCount={this.props.storyIds.length - 1}
+        pageRangeDisplayed={5}
+        onChange={this.handlePageChange}
+      />
     );
   };
-
-  renderStories(storyIds) {
-    return storyIds.map(storyId => (
-      <WithItem key={storyId} item={storyId}>
-        {({ item, loading }) => {
-          if (loading) {
-            return <div className="loading">...Loading</div>;
-          }
-
-          return <Story {...item} />;
-        }}
-      </WithItem>
-    ));
-  }
 
   render() {
     const start = this.pageSize * (this.state.activePage - 1);
@@ -56,7 +54,7 @@ class Stories extends PureComponent {
     return (
       <PaginationStyles>
         {this.renderPagination()}
-        {this.renderStories(this.props.storyIds.slice(start, end))}
+        {renderStories(this.props.storyIds.slice(start, end))}
         {this.renderPagination()}
       </PaginationStyles>
     );
