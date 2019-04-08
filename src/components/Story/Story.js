@@ -4,6 +4,8 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import { Link } from '@reach/router';
 import URL from 'url-parse';
 
+import withItem from 'utils/withItem';
+
 import { storyType } from 'types';
 
 import { StoryWrapper } from './styles';
@@ -42,5 +44,7 @@ export class Story extends PureComponent {
 Story.propTypes = {
   ...storyType,
 };
+
+export const StoryWithItem = withItem(Story);
 
 export default Story;

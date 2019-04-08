@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const PaginationStyles = styled.div`
-.pagination {
+  .pagination {
     padding-left: 0;
   }
-  
+
   .pagination > li {
     display: inline;
   }
-  
+
   .pagination > li > a,
   .pagination > li > span {
     position: relative;
@@ -20,7 +20,7 @@ export const PaginationStyles = styled.div`
     border: 1px solid #ddd;
     margin-left: -1px;
   }
-  
+
   .pagination > .active > a,
   .pagination > .active > a:focus,
   .pagination > .active > a:hover,
@@ -33,7 +33,7 @@ export const PaginationStyles = styled.div`
     border-color: #337ab7;
     cursor: default;
   }
-  
+
   .pagination > li > a:focus,
   .pagination > li > a:hover,
   .pagination > li > span:focus,
@@ -43,5 +43,4 @@ export const PaginationStyles = styled.div`
     background-color: #eee;
     border-color: #ddd;
   }
-  
-`
+`;

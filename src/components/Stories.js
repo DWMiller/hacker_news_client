@@ -1,64 +1,48 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 
 import { PaginationStyles } from './styles/PaginationStyles';
-import { WithItem } from 'utils/withItemRP';
 
-import { Story } from './Story/Story';
+import { StoryWithItem } from './Story/Story';
 
-const renderStories = storyIds => {
-  return storyIds.map(storyId => (
-    <WithItem key={storyId} item={storyId}>
-      {({ item, loading }) => {
-        if (loading) {
-          return <div className="loading">...Loading</div>;
-        }
+const PAGE_SIZE = 10;
 
-        return <Story {...item} />;
-      }}
-    </WithItem>
-  ));
-};
+function Stories(props) {
+  const [page, setPage] = useState(1);
 
-class Stories extends PureComponent {
-  pageSize = 10;
+  const handlePageChange = pageNumber => setPage(pageNumber);
 
-  state = {
-    activePage: 1,
-  };
+  const start = PAGE_SIZE * (page - 1);
+  let end = start + PAGE_SIZE;
 
-  handlePageChange = pageNumber => {
-    this.setState({ activePage: pageNumber });
-  };
+  end = end >= props.storyIds.length ? props.storyIds.length - 1 : end;
 
-  renderPagination = () => {
-    return (
+  const displayedStories = props.storyIds.slice(start, end);
+
+  return (
+    <PaginationStyles>
       <Pagination
-        activePage={this.state.activePage}
-        itemsCountPerPage={this.pageSize}
-        totalItemsCount={this.props.storyIds.length - 1}
+        activePage={page}
+        itemsCountPerPage={PAGE_SIZE}
+        totalItemsCount={props.storyIds.length - 1}
         pageRangeDisplayed={5}
-        onChange={this.handlePageChange}
+        onChange={handlePageChange}
       />
-    );
-  };
 
-  render() {
-    const start = this.pageSize * (this.state.activePage - 1);
-    let end = start + this.pageSize;
+      {displayedStories.map(id => (
+        <StoryWithItem key={id} item={id} />
+      ))}
 
-    end =
-      end >= this.props.storyIds.length ? this.props.storyIds.length - 1 : end;
-
-    return (
-      <PaginationStyles>
-        {this.renderPagination()}
-        {renderStories(this.props.storyIds.slice(start, end))}
-        {this.renderPagination()}
-      </PaginationStyles>
-    );
-  }
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={PAGE_SIZE}
+        totalItemsCount={props.storyIds.length - 1}
+        pageRangeDisplayed={5}
+        onChange={handlePageChange}
+      />
+    </PaginationStyles>
+  );
 }
 
 Stories.propTypes = {

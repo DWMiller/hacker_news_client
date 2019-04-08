@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useFetchItem from 'utils/useFetchItem';
+import { useFetchItem } from 'utils/withItem';
 
 import Comment from 'components/Comment/Comment';
 

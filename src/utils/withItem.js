@@ -1,46 +1,37 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState, useEffect } from 'react';
 
 import { fetchItem } from './api';
 
+export function useFetchItem(id) {
+  const [item, setItem] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(
+    () => {
+      fetchItem(id).then(result => {
+        if (isLoading) {
+          setItem(result);
+          setLoading(false);
+        }
+      });
+    },
+    () => {
+      setLoading(false);
+    },
+    []
+  );
+
+  return [isLoading, item];
+}
+
 export default WrappedComponent => {
-  return class extends PureComponent {
-    fetching = false;
+  return props => {
+    const [loading, item] = useFetchItem(props.item);
 
-    state = {
-      item: null,
-    };
-
-    itemFetched = item => {
-      if (this.fetching) {
-        this.setState({ item });
-      }
-    };
-
-    startFetch() {
-      this.fetching = true;
-      fetchItem(this.props.item).then(this.itemFetched);
-    }
-
-    componentDidMount() {
-      this.startFetch();
-    }
-
-    componentDidUpdate(prevProps) {
-      if (this.props.item !== prevProps.item) {
-        this.startFetch();
-      }
-    }
-
-    componentWillUnmount() {
-      this.fetching = false;
-    }
-
-    render() {
-      if (this.state.item) {
-        return <WrappedComponent {...this.props} {...this.state.item} />;
-      } else {
-        return <div className="loading">...Loading</div>;
-      }
+    if (!loading) {
+      return <WrappedComponent {...props} {...item} />;
+    } else {
+      return <div className="loading">...Loading</div>;
     }
   };
 };

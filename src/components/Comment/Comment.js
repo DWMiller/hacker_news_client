@@ -65,8 +65,10 @@ const Comment = React.memo(props => {
 
 Comment.propTypes = { ...commentType };
 
+export const CommentWithItem = withItem(Comment);
+
 // ! Should refactor this, encountered problems with
 // ! child component needing to import parent for recursive rendering
-const CommentList = withMore(withItem(Comment), LoadMoreButton);
+const CommentList = withMore(CommentWithItem, LoadMoreButton);
 
 export default Comment;

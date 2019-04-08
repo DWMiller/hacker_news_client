@@ -1,17 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withMore from 'utils/withMore';
-import withItem from 'utils/withItem';
-import useFetchItem from 'utils/useFetchItem';
+import { useWithMore } from 'utils/withMore';
+import { useFetchItem } from 'utils/withItem';
 
-import Comment from 'components/Comment/Comment';
+import { CommentWithItem } from 'components/Comment/Comment';
 import Story from 'components/Story/Story';
 import LoadMoreButton from 'components/LordMoreButton';
-
-const CommentWithItem = withItem(Comment);
-const CommentList = withMore(CommentWithItem, LoadMoreButton);
 
 const ScreensStoryWrapper = styled.div`
   margin-bottom: 1em;
@@ -19,18 +15,33 @@ const ScreensStoryWrapper = styled.div`
 
 const ScreensStory = props => {
   const [loading, item] = useFetchItem(props.item);
+  const [kids, setKids] = useState([]);
+
+  const { displayedItems, hasMore, loadMore } = useWithMore(kids, 5);
+
+  useEffect(() => {
+    if (!loading) {
+      setKids(item.kids);
+    }
+  }, [loading, item]);
 
   if (loading) {
     return <div className="loading">...Loading</div>;
   }
 
-  const { kids: commentIds = [] } = item;
-
   return (
     <ScreensStoryWrapper>
       <Story {...item} />
       <div>
-        <CommentList items={commentIds} />
+        {displayedItems.map(item => (
+          <CommentWithItem item={item} key={item} />
+        ))}
+
+        {hasMore ? (
+          <LoadMoreButton onClick={loadMore}>
+            Load More - {kids.length - displayedItems.length} Remaining
+          </LoadMoreButton>
+        ) : null}
       </div>
     </ScreensStoryWrapper>
   );
