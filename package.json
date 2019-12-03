@@ -5,21 +5,21 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-ga": "^2.5.7",
-    "react-icons": "^3.5.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-ga": "^2.7.0",
+    "react-icons": "^3.8.0",
     "react-js-pagination": "^3.0.2",
-    "react-lazyload": "^2.5.0",
-    "react-scripts": "2.1.8",
-    "react-timestamp": "^4.4.0",
+    "react-lazyload": "^2.6.5",
+    "react-scripts": "3.2.0",
+    "react-timestamp": "^5.1.0",
     "sanitize-html": "^1.20.0",
     "sillyname": "^0.1.0",
-    "styled-components": "^4.2.0",
-    "url-parse": "^1.4.4"
+    "styled-components": "^4.4.1",
+    "url-parse": "^1.4.7"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "cross-env": "^6.0.3"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-scripts start",
