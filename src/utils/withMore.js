@@ -42,7 +42,7 @@ export default (WrappedComponent, LoadMoreButton = DefaultLoadMoreButton) => {
           renderItems(props.items.slice(0, displayedItems), WrappedComponent)}
         {hasMore && (
           <LoadMoreButton onClick={loadMore}>
-            Load More - {props.items.length - displayedItems} Remaining
+            Load More - {props.items.length - displayedItems.length} Remaining
           </LoadMoreButton>
         )}
       </React.Fragment>

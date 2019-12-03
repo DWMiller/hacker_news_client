@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useWithMore } from 'utils/withMore';
@@ -13,17 +14,19 @@ const ScreensStoryWrapper = styled.div`
   margin-bottom: 1em;
 `;
 
-const ScreensStory = props => {
-  const [loading, item] = useFetchItem(props.item);
+function ScreensStory() {
+  const { item } = useParams();
+
+  const [loading, itemData] = useFetchItem(item);
   const [kids, setKids] = useState([]);
 
   const { displayedItems, hasMore, loadMore } = useWithMore(kids, 5);
 
   useEffect(() => {
     if (!loading) {
-      setKids(item.kids);
+      setKids(itemData.kids);
     }
-  }, [loading, item]);
+  }, [loading, itemData]);
 
   if (loading) {
     return <div className="loading">...Loading</div>;
@@ -31,7 +34,7 @@ const ScreensStory = props => {
 
   return (
     <ScreensStoryWrapper>
-      <Story {...item} />
+      <Story {...itemData} />
       <div>
         {displayedItems.map(item => (
           <CommentWithItem item={item} key={item} />
@@ -45,7 +48,7 @@ const ScreensStory = props => {
       </div>
     </ScreensStoryWrapper>
   );
-};
+}
 
 ScreensStory.propTypes = {
   storyId: PropTypes.number,

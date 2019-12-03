@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LazyLoad from 'react-lazyload';
+import { Link } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
-import { Link } from '@reach/router';
 
 import { commentType } from 'types';
 import { getAlias } from 'utils/aliaser';

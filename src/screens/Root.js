@@ -1,21 +1,36 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
 
 import ScreensStories from 'screens/Stories';
 import ScreensComments from 'screens/Comments';
 import ScreensStory from 'screens/Story';
 import ContactScreen from 'screens/Contact';
 
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+
+const Page = styled.div``;
+
 export const ScreensRoot = () => (
   <Router>
-    <ScreensStories type="top" path="/" />
-
-    <ScreensStories exact path="/stories/:type" />
-
-    <ScreensStory path="/story/:item" />
-
-    <ScreensComments path="/comment/:item" />
-
-    <ContactScreen path="/contact" />
+    <Header />
+    <Page>
+      <Switch>
+        <Route exact path="/stories/:type">
+          <ScreensStories />
+        </Route>
+        <Route path="/story/:item">
+          <ScreensStory />
+        </Route>
+        <Route path="/comment/:item">
+          <ScreensComments />
+        </Route>
+        <Route path="/contact">
+          <ContactScreen />
+        </Route>
+      </Switch>
+    </Page>
+    <Footer />
   </Router>
 );

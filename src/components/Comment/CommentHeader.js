@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-import Timestamp from 'react-timestamp';
-import { Link } from '@reach/router';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import Timestamp from 'react-timestamp';
+import styled from 'styled-components';
 
 const CommentHeaderWrapper = styled.div`
   margin-bottom: ${props => (props.isMinimized ? '0' : '1em')};

@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@reach/router": "^1.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -11,6 +10,7 @@
     "react-icons": "^3.8.0",
     "react-js-pagination": "^3.0.2",
     "react-lazyload": "^2.6.5",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-timestamp": "^5.1.0",
     "sanitize-html": "^1.20.0",

@@ -1,33 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import { fetchStories } from 'utils/api';
 
 import Stories from 'components/Stories';
 
-export class ScreensStories extends Component {
-  state = {
-    storyIds: [],
-  };
+function ScreensStories() {
+  const { type } = useParams();
 
-  fetchStories(type = 'top') {
-    return fetchStories(type).then(storyIds => {
-      this.setState(() => ({
-        storyIds,
-      }));
+  const [storyIds, setStoryIds] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchStories(type).then(storyIds => {
+      setStoryIds(storyIds);
     });
-  }
+  }, [type]);
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.type !== prevProps.type) this.fetchStories(this.props.type);
-  }
-
-  componentDidMount() {
-    this.fetchStories(this.props.type);
-  }
-
-  render() {
-    return <Stories storyIds={this.state.storyIds} />;
-  }
+  return <Stories storyIds={storyIds} />;
 }
 
 export default ScreensStories;

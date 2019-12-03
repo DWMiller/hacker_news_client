@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import React, { Component } from 'react';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { ScreensRoot } from "screens/Root";
-import Header from "./Header";
-import Footer from "./Footer";
+import { ScreensRoot } from 'screens/Root';
 
 const theme = {
-  black: "#393939",
-  grey: "#3A3A3A",
+  black: '#393939',
+  grey: '#3A3A3A',
   green: '#4a913c',
-  shadow: "rgba(0,0,0,0.3) 1px 1px 3px 0px;"
+  shadow: 'rgba(0,0,0,0.3) 1px 1px 3px 0px;',
 };
 
 const AppWrapper = styled.div`
@@ -66,19 +64,14 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Page = styled.div``;
-
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <AppWrapper>
           <GlobalStyles />
-          <Header />
-          <Page>
-            <ScreensRoot />
-          </Page>
-          <Footer />
+
+          <ScreensRoot />
         </AppWrapper>
       </ThemeProvider>
     );

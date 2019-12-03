@@ -41,4 +41,8 @@ export const StoryWrapper = styled.div`
   .story__summary {
     margin: 0;
   }
+
+  .story__skeleton {
+    height: 53px;
+  }
 `;
