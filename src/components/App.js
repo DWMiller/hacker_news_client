@@ -3,6 +3,8 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { ScreensRoot } from 'screens/Root';
 
+import bgImg from '../assets/sayagata-400px.png';
+
 const theme = {
   black: '#393939',
   grey: '#3A3A3A',
@@ -34,7 +36,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: url('../assets/sayagata-400px.png');
+    background: url(${bgImg});
     margin: 0;
     padding: 0;
     font-size: 1.5rem;
