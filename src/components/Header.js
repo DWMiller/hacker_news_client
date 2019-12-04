@@ -29,7 +29,6 @@ class Header extends Component {
         <HackerNewsLink href="//news.ycombinator.com/">
           <FaHackerNews />
         </HackerNewsLink>
-        <span>Stories - </span>
         <NavLink to="/stories/best">Best</NavLink>
         <NavLink to="/stories/new">New</NavLink>
         <NavLink to="/stories/top">Top</NavLink>

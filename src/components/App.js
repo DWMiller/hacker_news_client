@@ -52,6 +52,7 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4,
   h5 {
+    line-height:1;
     font-family: serif;
   }
 

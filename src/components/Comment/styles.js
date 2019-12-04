@@ -38,4 +38,8 @@ export const CommentWrapper = styled.div`
       margin-left: 1.5rem;
     }
   }
+
+  .height__skeleton {
+    height: 60px;
+  }
 `;

@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-export const StoryWrapper = styled.div`
+export const StoryContainer = styled.div`
   margin-bottom: 0.5em;
-  padding: 10px;
+  padding: 10px 10px 10px 15px;
   background: rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(204, 204, 204);
-  border-left: 5px solid rgb(255, 255, 255);
   box-shadow: ${props => props.theme.shadow};
 
   @media (min-width: 600px) {

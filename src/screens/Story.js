@@ -12,6 +12,10 @@ import LoadMoreButton from 'components/LordMoreButton';
 
 const ScreensStoryWrapper = styled.div`
   margin-bottom: 1em;
+
+  .story__container {
+    border-top: 4px solid ${props => props.theme.green};
+  }
 `;
 
 function ScreensStory() {

@@ -8,7 +8,7 @@ import withItem from 'utils/withItem';
 
 import { storyType } from 'types';
 
-import { StoryWrapper } from './styles';
+import { StoryContainer } from './styles';
 
 function Story(props) {
   const { id, title, time, url, kids } = props;
@@ -17,7 +17,7 @@ function Story(props) {
   const commentCount = kids ? kids.length - 1 : 0;
 
   return (
-    <StoryWrapper>
+    <StoryContainer className="story__container">
       <div className="story__title">
         <a href={url}>
           <FaExternalLinkAlt />
@@ -35,15 +35,15 @@ function Story(props) {
         {' | '}
         <Link to={`/story/${id}`}>{commentCount} Comments</Link>
       </p>
-    </StoryWrapper>
+    </StoryContainer>
   );
 }
 
 function Skeleton() {
   return (
-    <StoryWrapper>
+    <StoryContainer>
       <div className="story__skeleton"></div>
-    </StoryWrapper>
+    </StoryContainer>
   );
 }
 
