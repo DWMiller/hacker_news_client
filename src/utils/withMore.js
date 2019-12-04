@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const DefaultLoadMoreButton = styled.button``;
 
-const renderItems = (items, Component) => {
-  return items.map(item => {
-    const key = item.id ? item.id : item;
-    return <Component key={key} item={item} />;
-  });
-};
-
 export const useWithMore = (items = [], increment = 5) => {
   const [displayedCount, setDisplayedCount] = useState(increment);
 
-  const [displayedItems, setDisplayedItems] = useState([]);
-
-  useEffect(() => {
-    setDisplayedItems(items.slice(0, displayedCount));
-  }, [items, displayedCount]);
+  const displayedItems = React.useMemo(() => items.slice(0, displayedCount), [
+    items,
+    displayedCount,
+  ]);
 
   const hasMore = displayedCount < items.length;
 
-  const loadMore = () => {
-    setDisplayedCount(displayedCount + increment);
-  };
+  const loadMore = React.useCallback(() => {
+    // TODO - increment can not exceed remaining item count, do nothing if !hasMore
+    setDisplayedCount(count => count + increment);
+  }, [increment]);
 
   return {
     displayedItems,
@@ -38,8 +31,11 @@ export default (WrappedComponent, LoadMoreButton = DefaultLoadMoreButton) => {
 
     return (
       <React.Fragment>
-        {props.items.length > 0 &&
-          renderItems(props.items.slice(0, displayedItems), WrappedComponent)}
+        {displayedItems.map(item => {
+          const key = item.id ? item.id : item;
+          return <WrappedComponent key={key} item={item} />;
+        })}
+
         {hasMore && (
           <LoadMoreButton onClick={loadMore}>
             Load More - {props.items.length - displayedItems.length} Remaining

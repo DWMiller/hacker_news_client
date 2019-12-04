@@ -65,7 +65,15 @@ const Comment = React.memo(props => {
 
 Comment.propTypes = { ...commentType };
 
-export const CommentWithItem = withItem(Comment);
+function Skeleton() {
+  return (
+    <CommentWrapper>
+      <div className="comment__skeleton"></div>
+    </CommentWrapper>
+  );
+}
+
+export const CommentWithItem = withItem(Comment, Skeleton);
 
 // ! Should refactor this, encountered problems with
 // ! child component needing to import parent for recursive rendering

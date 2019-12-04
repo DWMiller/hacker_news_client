@@ -9,7 +9,7 @@ const theme = {
   black: '#393939',
   grey: '#3A3A3A',
   green: '#4a913c',
-  shadow: 'rgba(0,0,0,0.3) 1px 1px 3px 0px;',
+  shadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 0px',
 };
 
 const AppWrapper = styled.div`

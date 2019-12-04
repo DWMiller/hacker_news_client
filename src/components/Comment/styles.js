@@ -23,19 +23,19 @@ export const CommentWrapper = styled.div`
       text-decoration: none;
     }
 
-    .comment__childrenWrapper {
-      margin-left: 0.5rem;
-
-      @media (min-width: 800px) {
-        margin-left: 1.5rem;
-      }
-    }
-
     ${props =>
       props.isMinimized &&
       css`
         box-shadow: none;
         border: none;
       `};
+  }
+
+  .comment__childrenWrapper {
+    margin-left: 0.5rem;
+
+    @media (min-width: 800px) {
+      margin-left: 1.5rem;
+    }
   }
 `;
