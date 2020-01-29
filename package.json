@@ -11,15 +11,15 @@
     "react-js-pagination": "^3.0.2",
     "react-lazyload": "^2.6.5",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "3.3.0",
     "react-timestamp": "^5.1.0",
-    "sanitize-html": "^1.20.0",
+    "sanitize-html": "^1.21.1",
     "sillyname": "^0.1.0",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.0.0",
     "url-parse": "^1.4.7"
   },
   "devDependencies": {
-    "cross-env": "^6.0.3"
+    "cross-env": "^7.0.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-scripts start",
