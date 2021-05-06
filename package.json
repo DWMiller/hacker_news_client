@@ -13,7 +13,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-timestamp": "^5.1.0",
-    "sanitize-html": "^1.21.1",
+    "sanitize-html": "^2.3.2",
     "sillyname": "^0.1.0",
     "styled-components": "^5.0.0",
     "url-parse": "^1.4.7"
